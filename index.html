@@ -1,0 +1,100 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Johnstone RSVP</title>
+  <meta name="description" content="My Parse App">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href='https://fonts.googleapis.com/css?family=Kurale|Raleway:400,500' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+</head>
+
+<body>
+
+  <body>
+
+    <div id="main">
+
+        <div class="header-container pure-u-24-24">
+          <img class="pure-img pure-u-8-24 johnstone-logo" src="JS_square_logo.png">
+        </div>
+
+          <h2 class="rsvp-header">Geothermal Training Course</h2>
+
+          <form id="rsvp-form" name="rsvp-form" class="pure-form pure-form-stacked pure-u-18-24">
+            <div class="form-input">
+              <label> First Name </label>
+              <input id="first-name" name="first-name" maxlength="50" value="" type="text" placeholder="First Name" required>
+            </div>
+
+            <div class="form-input">
+              <label> Last Name </label>
+              <input id="last-name" name="last-name" maxlength="50" value="" type="text" placeholder="Last Name" required>
+            </div>
+
+            <div class="form-input">
+              <label>Company Name</label>
+              <input id="company-name" name="company-name" maxlength="30" value="" type="text" placeholder="Company Name" required>
+            </div>
+
+            <!-- <div class="form-input">
+              <label>How many guests will be attending?</label>
+              <input id="attending" name="attending" value="" type="text" placeholder="# Attending" required>
+            </div> -->
+
+            <div class="form-input">
+              <label>Phone</label>
+              <input id="customer-phone" name="customer-phone" maxlength="10" value="" type="text" placeholder="0000000000" required>
+            </div>
+
+            <div class="form-input">
+              <input id="rsvp-submit" class="pure-button" type="submit" value="RSVP Now" />
+            </div>
+
+          </form>
+      </div>
+
+      <div id="thank-you" class="hidden">
+        <h2>Thank you Reserving your spot at<br>Johnstone Monroe's<br>Geothermal Training Course<br>
+        We look forward to seeing you February 11 @ 8am</h2>
+      </div>
+
+  <script type="text/javascript">
+    Parse.initialize("NKT6BFAgN82xuHRXRJqAeb8H1rpAw7rW875QrGmC", "6L9eIYMvpiBSmfTMJt1acguiQx4vD2tn5QSEyGEW");
+
+  var Attendee = Parse.Object.extend("Attendee");
+
+  $("#rsvp-form").submit(function(event){
+      event.preventDefault();
+        var firstName = $("#first-name").val();
+        var lastName = $("#last-name").val();
+        var company = $("#company-name").val();
+        var phone = $("#customer-phone").val();
+
+        var newAttendee = new Attendee();
+        newAttendee.set("firstName", firstName);
+        newAttendee.set("lastName", lastName);
+        newAttendee.set("company", company);
+        newAttendee.set("phone", phone);
+
+        newAttendee.save({
+          success: function (){
+            console.log("saved");
+            $("#rsvp-form").hide();
+            $("#thank-you").removeClass("hidden");
+
+          }, error: function(error){
+            console.log("Error:"+error.message);
+          }
+        });
+
+    });
+
+  </script>
+</body>
+
+</html>

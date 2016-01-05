@@ -95,9 +95,9 @@
 
     });
 
-//
-//     var Mailgun = require('mailgun');
-// Mailgun.initialize('raymondcamden.mailgun.org', 'mykeysmilkshakeisbetterthanyours');
+
+// var Mailgun = require('mailgun');
+// Mailgun.initialize('sandboxd2064f0b8f7a41cd8ec4a3b3288ae134.mailgun.org', 'pubkey-cc5d6cd3d56ff18849a5fc4de3235973');
 //
 // Parse.Cloud.beforeSave("CommentObject", function(request, response) {
 //
@@ -111,7 +111,7 @@
 // 	Mailgun.sendEmail({
 // 			to: "kyle.richardson@johnstonesupply.com",
 // 			from: request.object.get("email"),
-// 			subject: "Johnstone Support Request - " + request.object.get("area"),
+// 			subject: "Johnstone Support Request - " + request.object.get("description"),
 // 			text: text
 // 		}, {
 // 		success: function(httpResponse) {
@@ -119,10 +119,13 @@
 // 		},
 // 		error: function(httpResponse) {
 // 			console.error(httpResponse);
-// 			response.error("Uh oh, something went wrong");
+// 			response.error("Something went wrong");
 // 		}
 // 	});
 //
+// });
+
+
 
   </script>
 </body>

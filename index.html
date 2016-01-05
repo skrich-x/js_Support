@@ -37,8 +37,8 @@
             </div>
 
             <div class="form-input">
-              <label>Company Name</label>
-              <input id="company-name" name="company-name" maxlength="30" value="" type="text" placeholder="Company Name" required>
+              <label>Branch</label>
+              <input id="branch-name" name="banch-name" maxlength="30" value="" type="text" placeholder="Branch Name" required>
             </div>
 
             <!-- <div class="form-input">
@@ -72,7 +72,7 @@
       event.preventDefault();
         var firstName = $("#first-name").val();
         var lastName = $("#last-name").val();
-        var company = $("#company-name").val();
+        var branch = $("#branch-name").val();
         var phone = $("#customer-phone").val();
 
         var newAttendee = new Attendee();

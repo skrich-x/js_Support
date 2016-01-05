@@ -25,66 +25,73 @@
 
           <h2 class="rsvp-header">Johnstone Support Ticket</h2>
 
-          <form id="rsvp-form" name="rsvp-form" class="pure-form pure-form-stacked pure-u-18-24">
+          <form id="ticket-form" name="ticket-form" class="pure-form pure-form-stacked pure-u-18-24">
             <div class="form-input">
-              <label> First Name </label>
-              <input id="first-name" name="first-name" maxlength="50" value="" type="text" placeholder="First Name" required>
+              <label>Contact Name</label>
+              <input id="contact-name" name="contact-name" maxlength="50" value="" type="text" placeholder="Contact Name" required>
             </div>
 
-            <div class="form-input">
+            <!-- <div class="form-input">
               <label> Last Name </label>
               <input id="last-name" name="last-name" maxlength="50" value="" type="text" placeholder="Last Name" required>
-            </div>
+            </div> -->
 
             <div class="form-input">
               <label>Branch</label>
               <input id="branch-name" name="banch-name" maxlength="30" value="" type="text" placeholder="Branch Name" required>
             </div>
 
-            <!-- <div class="form-input">
-              <label>How many guests will be attending?</label>
-              <input id="attending" name="attending" value="" type="text" placeholder="# Attending" required>
-            </div> -->
-
             <div class="form-input">
-              <label>Phone</label>
-              <input id="customer-phone" name="customer-phone" maxlength="10" value="" type="text" placeholder="0000000000" required>
+              <label>Email</label>
+              <input id="contact-email" name="contact-email" maxlength="70" value="" type="text" placeholder="Contact Email" required>
             </div>
 
             <div class="form-input">
-              <input id="rsvp-submit" class="pure-button" type="submit" value="RSVP Now" />
+              <label>Phone</label>
+              <input id="customer-phone" name="customer-phone" maxlength="10" value="" type="text" placeholder="0000000000">
+            </div>
+
+            <div class="form-input">
+              <label>Please Describe the Issue</label>
+              <textarea id="description" name="textarea" rows="10" cols="50" value="" required></textarea>
+            </div>
+
+            <div class="form-input">
+              <input id="rsvp-submit" class="pure-button" type="submit" value="Submit Support Ticket" />
             </div>
 
           </form>
       </div>
 
       <div id="thank-you" class="hidden">
-        <h2>Thank you Reserving your spot at<br>Johnstone Monroe's<br>Geothermal Training Course<br>
-        We look forward to seeing you February 11 @ 8am</h2>
+        <h2>Thank you submitting your request for support. Please allow some time for response.</h2>
       </div>
 
   <script type="text/javascript">
     Parse.initialize("5i1KdSq5hvNgs2LtS6ji9v2Q4NLuuP91xO9ZZ4Nn", "q4RbrNXiHwyZBtZNLHbhM7nkvjYniigTrNyF6Ub5");
 
-  var Attendee = Parse.Object.extend("Attendee");
+  var Ticket = Parse.Object.extend("Ticket");
 
-  $("#rsvp-form").submit(function(event){
+  $("#ticket-form").submit(function(event){
       event.preventDefault();
-        var firstName = $("#first-name").val();
-        var lastName = $("#last-name").val();
+        var contactName = $("#contact-name").val();
+        var email = $("#contact-email").val();
+        // var lastName = $("#last-name").val();
         var branch = $("#branch-name").val();
         var phone = $("#customer-phone").val();
+        var description = $("#description").val();
 
-        var newAttendee = new Attendee();
-        newAttendee.set("firstName", firstName);
-        newAttendee.set("lastName", lastName);
-        newAttendee.set("company", company);
-        newAttendee.set("phone", phone);
+        var newTicket = new Ticket();
+        newTicket.set("contactName", contactName);
+        // newTicket.set("lastName", lastName);
+        newTicket.set("branch", branch);
+        newTicket.set("phone", phone);
+        newTicket.set("description", description);
 
-        newAttendee.save({
+        newTicket.save({
           success: function (){
             console.log("saved");
-            $("#rsvp-form").hide();
+            $("#ticket-form").hide();
             $("#thank-you").removeClass("hidden");
 
           }, error: function(error){

@@ -14,16 +14,16 @@ body {
   border-radius: 3px;
 }
 
-#rsvp-form{
+#ticket-form{
   margin: 1.5em auto;
   text-align: center;
 }
 
-#rsvp-form input{
+#ticket-form input{
   display: inline-block;
 }
 
-#rsvp-form label{
+#ticket-form label{
   font-family: 'Raleway', serif;
   text-align: center;
   font-size: 1em;

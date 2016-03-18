@@ -28,6 +28,10 @@ body {
   display: inline-block;
   width: 90%;
 }
+#ticket-form select{
+  display: inline-block;
+  width: 90%;
+}
 
 #ticket-form label{
   font-family: 'Raleway', serif;
@@ -55,6 +59,8 @@ body {
 }
 
 .header-container{
+  background-color: #D6D6D6;
+  background-image: linear-gradient(#D6D6D6, #FFFFFF);
 }
 
 #thank-you{
@@ -65,5 +71,5 @@ body {
 #thank-you h2{
   font-family: 'Raleway', serif;
   font-size: 2em;
-  color:#006C3E;
+  color:#EF3E42;
 }
